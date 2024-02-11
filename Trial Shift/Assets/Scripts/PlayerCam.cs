@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class PlayerCam : MonoBehaviour
 {
+    //CREDIT TO 'DAVE / GAMEDEVELOPMENT' (https://www.youtube.com/watch?v=f473C43s8nE)
+
     public float sensX;
     public float sensY;
 
@@ -20,7 +22,7 @@ public class PlayerCam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
