@@ -1,0 +1,50 @@
+== MODELS ==
+
+
+
+
+
+== TEXTURES ==
+
+Asphalt 002 - https://3dtextures.me/2018/01/21/asphalt-002/
+
+Brick Wall 009 - https://3dtextures.me/2018/02/11/brick-wall-009/
+
+Brick Wall 011 - https://3dtextures.me/2018/05/10/brick-wall-011/
+
+Brick Wall 019 - https://3dtextures.me/2020/09/17/brick-wall-019/
+
+Concrete 012 - https://ambientcg.com/view?id=Concrete012
+
+Concrete 017 - https://3dtextures.me/2021/07/12/concrete-017/
+
+Concrete 019 - https://3dtextures.me/2022/03/09/concrete-019/
+
+Concrete 034 - https://ambientcg.com/view?id=Concrete034
+
+Concrete 036 - https://ambientcg.com/view?id=Concrete036
+
+Degraded Concrete - https://freepbr.com/materials/degraded-concrete/
+
+Facade 006 - https://ambientcg.com/view?id=Facade006
+
+Flaking Plaster - https://freepbr.com/materials/flaking-plaster-pbr-material/
+
+Gross Dirty Tiles - https://freepbr.com/materials/gross-dirty-tiles-pbr/
+
+Ground Dirt 009 - https://3dtextures.me/2022/02/07/ground-dirt-009/
+
+Hardwood Brown Planks - https://freepbr.com/materials/hardwood-brown-planks-pbr-material/
+
+Old Plank Flooring 4 - https://freepbr.com/materials/old-abandoned-building-wood-plank-flooring-pbr-material-4/
+
+Plaster 001 - https://3dtextures.me/2018/03/11/plaster-001/
+
+Rough Plaster - https://freepbr.com/materials/rough-plaster-pbr-material/
+
+Rusty Corrugated Metal Panel 01 - https://www.cgbookcase.com/textures/rusty-corrugated-metal-panel-01/
+
+Used Stainless Steel 2 - https://freepbr.com/materials/used-stainless-steel2/
+
+Wall Plaster 001 - https://3dtextures.me/2021/10/30/wall-plaster-001/
+
