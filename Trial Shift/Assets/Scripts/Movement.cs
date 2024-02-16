@@ -6,19 +6,36 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [Header("Camera")]
     [SerializeField] Transform playerCamera;
     [SerializeField][Range(0.0f, 0.5f)] float mouseSmoothTime = 0.03f;
     [SerializeField] bool cursorLock = true;
     [SerializeField] float mouseSensitivity = 3.5f;
-    [SerializeField] float Speed = 6.0f;
+
+    [Header("Movement")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] public float walkSpeed;
+    [SerializeField] public float sprintSpeed;
     [SerializeField][Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
+
+    [Header("Jumping")]
     [SerializeField] float gravity = -30f;
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
+    [Header("Crouching")]
+    public float crouchSpeed;
+    public float crouchYScale;
+    private float startYScale;
+
     public float jumpHeight = 6f;
     float velocityY;
     bool isGrounded;
+
+    [Header("Keybinds")]
+    public KeyCode jumpKey = KeyCode.Space;
+    public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode crouchKey = KeyCode.C;
 
     float cameraCap;
     Vector2 currentMouseDelta;
@@ -29,6 +46,17 @@ public class Movement : MonoBehaviour
     Vector2 currentDirVelocity;
     Vector3 velocity;
 
+    Rigidbody rb;
+
+    public MovementState state;
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        crouching,
+        air
+    }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -38,12 +66,46 @@ public class Movement : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = true;
         }
+
+        startYScale = transform.localScale.y;
     }
 
     void Update()
     {
         UpdateMouse();
         UpdateMove();
+        StateHandler();
+    }
+
+    private void StateHandler()
+    {
+        //crouching
+        if (Input.GetKey(crouchKey))
+        {
+            state = MovementState.crouching;
+            moveSpeed = crouchSpeed;
+        }
+
+        //sprinting
+        if (isGrounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting;
+            moveSpeed = sprintSpeed;
+        }
+
+        //walking
+        else if (isGrounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+
+        //jumping
+
+        else
+        {
+            state= MovementState.air;
+        }
     }
 
     void UpdateMouse()
@@ -72,11 +134,12 @@ public class Movement : MonoBehaviour
 
         velocityY += gravity * 2f * Time.deltaTime;
 
-        Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * Speed + Vector3.up * velocityY;
+        Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * moveSpeed + Vector3.up * velocityY;
 
         controller.Move(velocity * Time.deltaTime);
 
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        //jump
+        if (isGrounded && Input.GetKey(jumpKey))
         {
             velocityY = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -84,6 +147,19 @@ public class Movement : MonoBehaviour
         if (isGrounded! && controller.velocity.y < -1f)
         {
             velocityY = -8f;
+        }
+
+        //crouch
+        if (Input.GetKeyDown(crouchKey))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        }
+
+        // stop crouch
+        if (Input.GetKeyUp(crouchKey))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
     }
 }
