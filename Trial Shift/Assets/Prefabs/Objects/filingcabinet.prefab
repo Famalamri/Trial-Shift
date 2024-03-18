@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1145301240260964580}
   - component: {fileID: 4426160644087336701}
   - component: {fileID: 2890865262407694138}
-  m_Layer: 0
+  - component: {fileID: 2932768936579158980}
+  m_Layer: 6
   m_Name: draws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2932768936579158980
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037935681342662935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00496, y: 0.0003335997, z: 0.012899999}
+  m_Center: {x: 0, y: 0.000044639848, z: -0.0054249987}
 --- !u!1 &2176390865573895914
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +108,8 @@ GameObject:
   - component: {fileID: 7221400574877910879}
   - component: {fileID: 2374385402934915649}
   - component: {fileID: 828346216462013978}
-  m_Layer: 0
+  - component: {fileID: 4834090194773732931}
+  m_Layer: 6
   m_Name: filingcabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +181,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4834090194773732931
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176390865573895914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005901422, y: 0.00854142, z: 0.014299997}
+  m_Center: {x: 0, y: 0.0000000037252903, z: -0.0028499956}
 --- !u!1 &4105244081384960344
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3725340082711423970}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: filingcabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

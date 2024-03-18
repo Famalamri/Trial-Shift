@@ -95,7 +95,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178486081241910571}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fadb03bd9f3614c8e11d5cf488f029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 9130961039992753952}
+  zoomSpeed: 1
   sensX: 700
   sensY: 700
   orientation: {fileID: 0}
@@ -360,6 +362,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 541023948464545834, guid: 5d9aa8d4ca4d616488b3ded1ef2628af, type: 3}
+      propertyPath: m_TagString
+      value: Mop
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5d9aa8d4ca4d616488b3ded1ef2628af, type: 3}
       propertyPath: m_Name
       value: Mop_LP
@@ -367,6 +373,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5d9aa8d4ca4d616488b3ded1ef2628af, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d9aa8d4ca4d616488b3ded1ef2628af, type: 3}
+      propertyPath: m_TagString
+      value: Mop
       objectReference: {fileID: 0}
     - target: {fileID: 4972008055617362980, guid: 5d9aa8d4ca4d616488b3ded1ef2628af, type: 3}
       propertyPath: m_Materials.Array.data[0]
