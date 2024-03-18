@@ -5,15 +5,17 @@ using UnityEngine;
 public class WeaponSwitcher : MonoBehaviour
 {
     [SerializeField] int currentWeapon = 0;
+    private Collider[] colliders;
 
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // Get all colliders of child objects
+        colliders = GetComponentsInChildren<Collider>();
+
+        // Disable all colliders except for the first weapon
+        SetCollidersActive(currentWeapon);
     }
 
-    // Update is called once per frame
     void Update()
     {
         SetWeaponActive();
@@ -22,28 +24,25 @@ public class WeaponSwitcher : MonoBehaviour
 
     private void ProcessScrollWheelInput()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0)
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0f)
         {
-            //currentWeapon++;
-            if(currentWeapon >= transform.childCount - 1)
-            {
-                currentWeapon = 0;
-            }
-            else
-            {
-                currentWeapon++;
-            }
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            if (currentWeapon <= 0)
+            // Disable current weapon collider
+            SetColliderActive(currentWeapon, false);
+
+            // Update current weapon index
+            currentWeapon += (int)Mathf.Sign(scroll);
+            if (currentWeapon < 0)
             {
                 currentWeapon = transform.childCount - 1;
             }
-            else
+            else if (currentWeapon >= transform.childCount)
             {
-                currentWeapon--;
+                currentWeapon = 0;
             }
+
+            // Enable new current weapon collider
+            SetColliderActive(currentWeapon, true);
         }
     }
 
@@ -57,13 +56,27 @@ public class WeaponSwitcher : MonoBehaviour
             {
                 weapon.gameObject.SetActive(true);
             }
-
-            else if(weaponIndex != currentWeapon)
+            else
             {
                 weapon.gameObject.SetActive(false);
             }
             weaponIndex++;
         }
-    } 
+    }
 
+    private void SetCollidersActive(int index)
+    {
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            colliders[i].enabled = (i == index);
+        }
+    }
+
+    private void SetColliderActive(int index, bool isActive)
+    {
+        if (index >= 0 && index < colliders.Length)
+        {
+            colliders[index].enabled = isActive;
+        }
+    }
 }

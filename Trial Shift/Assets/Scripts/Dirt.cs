@@ -5,19 +5,22 @@ using UnityEngine;
 public class Dirt : MonoBehaviour
 {
     // Variables to control opacity reduction
-    public float opacityReductionAmount = 0.5f; // Amount of opacity reduced per collision
+    public float opacityReductionAmount = 0.4f; // Amount of opacity reduced per collision
     public float minOpacity = 0f; // Minimum opacity before dirt is disabled
 
     private bool isDisabled = false; // Flag to track if dirt is disabled
 
     // Called when a trigger collider enters the GameObject's trigger collider
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Mop collided with dirt");
+        // Debug log to check if OnTriggerEnter is being called
+        Debug.Log("Trigger entered!");
 
         // Check if the collider belongs to the mop and the dirt is not disabled
         if (other.CompareTag("Mop") && !isDisabled)
         {
+            Debug.Log("Mop collided with dirt");
+
             // Reduce dirt opacity when colliding with the mop
             ReduceOpacity();
         }
@@ -26,6 +29,8 @@ public class Dirt : MonoBehaviour
     // Reduces the opacity of the dirt and disables it if opacity falls below a threshold
     private void ReduceOpacity()
     {
+        Debug.Log("Reducing dirt opacity...");
+
         // Get the Renderer component to modify the material color
         Renderer renderer = GetComponent<Renderer>();
         if (renderer == null)

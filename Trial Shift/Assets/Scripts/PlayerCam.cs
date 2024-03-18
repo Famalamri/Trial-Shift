@@ -1,17 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerCam : MonoBehaviour
 {
     //CREDIT TO MKs Unity https://youtu.be/pSEYdnAHIKg
 
     public Camera mainCamera;
-    public float zoomSpeed = 1;
 
-    private bool buttonReleased;
+    public float zoomSpeed = 5f;
+    public float maxZoomFOV = 50f;
+    public float normalFOV = 70f;
+    public float zoomSmoothness = 0.1f;
 
+    private bool isZooming = false;
 
     //CREDIT TO 'DAVE / GAMEDEVELOPMENT' (https://www.youtube.com/watch?v=f473C43s8nE)
 
@@ -27,35 +28,21 @@ public class PlayerCam : MonoBehaviour
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
         UnityEngine.Cursor.visible = false;
-        buttonReleased = true;
-        //mainCamera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //zoom
+        // Zoom in smoothly when right mouse button is pressed
         if (Input.GetMouseButtonDown(1))
         {
-            buttonReleased = false;
-            if(mainCamera.fieldOfView >= 45)
-            {
-                mainCamera.fieldOfView -= 15;
-            }
+            StartCoroutine(ZoomCoroutine(maxZoomFOV));
         }
 
+        // Zoom out smoothly when right mouse button is released
         if (Input.GetMouseButtonUp(1))
         {
-            buttonReleased = true;
-        }
-
-        if (buttonReleased)
-        {
-            if(mainCamera.fieldOfView <= 60)
-            {
-                mainCamera.fieldOfView = 60;
-                //mainCamera.fieldOfView += 1;
-            }
+            StartCoroutine(ZoomCoroutine(normalFOV));
         }
 
         //get mouse input
@@ -75,5 +62,20 @@ public class PlayerCam : MonoBehaviour
 
         //rotate player along y axis
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    IEnumerator ZoomCoroutine(float targetFOV)
+    {
+        float startFOV = mainCamera.fieldOfView;
+        float timer = 0;
+
+        while (timer < zoomSmoothness)
+        {
+            mainCamera.fieldOfView = Mathf.Lerp(startFOV, targetFOV, timer / zoomSmoothness);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        mainCamera.fieldOfView = targetFOV;
     }
 }

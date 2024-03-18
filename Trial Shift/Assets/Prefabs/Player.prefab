@@ -43,8 +43,6 @@ GameObject:
   - component: {fileID: 6563931136317075600}
   - component: {fileID: 4571577731367733737}
   - component: {fileID: 5806495250288582808}
-  - component: {fileID: 5530027294603759417}
-  - component: {fileID: 2014749167249970487}
   m_Layer: 7
   m_Name: PlayerObj
   m_TagString: Player
@@ -132,56 +130,6 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &5530027294603759417
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527255156483593158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2014749167249970487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4527255156483593158}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67f013a066070e49934bd916a58fd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  mouseSmoothTime: 0.02
-  cursorLock: 1
-  mouseSensitivity: 2.8
-  moveSpeed: 1
-  walkSpeed: 6
-  sprintSpeed: 10
-  moveSmoothTime: 0.125
-  gravity: -15
-  groundCheck: {fileID: 2011376836160617908}
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
-  crouchSpeed: 0
-  crouchYScale: 0
-  jumpHeight: 4
-  jumpKey: 32
-  sprintKey: 304
-  crouchKey: 99
-  state: 0
 --- !u!1 &5845698935170334383
 GameObject:
   m_ObjectHideFlags: 0
