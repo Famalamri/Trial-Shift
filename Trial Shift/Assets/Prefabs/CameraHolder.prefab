@@ -103,8 +103,8 @@ MonoBehaviour:
   maxZoomFOV: 50
   normalFOV: 70
   zoomSmoothness: 0.1
-  sensX: 700
-  sensY: 700
+  sensX: 650
+  sensY: 650
   orientation: {fileID: 0}
 --- !u!1 &5821496994177169006
 GameObject:
