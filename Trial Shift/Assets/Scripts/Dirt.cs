@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Dirt : MonoBehaviour
 {
+    public AudioClip[] audioClips;
+    private AudioSource audioSource;
+
     // Variables to control opacity reduction
     public float opacityReductionAmount = 0.4f; // Amount of opacity reduced per collision
     public float minOpacity = 0f; // Minimum opacity before dirt is disabled
 
     private bool isDisabled = false; // Flag to track if dirt is disabled
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
-    // Called when a trigger collider enters the GameObject's trigger collider
     private void OnTriggerEnter(Collider other)
     {
-        // Debug log to check if OnTriggerEnter is being called
         Debug.Log("Trigger entered!");
 
         // Check if the collider belongs to the mop and the dirt is not disabled
@@ -58,10 +63,25 @@ public class Dirt : MonoBehaviour
     // Disables the dirt GameObject
     private void DisableDirt()
     {
-        // Set the flag to indicate that the dirt is disabled
-        isDisabled = true;
+        // Play the audio clip
+        if (audioClips.Length > 0)
+        {
+            audioSource.clip = audioClips[Random.Range(0, audioClips.Length)];
+            audioSource.Play();
+        }
 
-        // Disable the GameObject
+        // Start a coroutine to wait for the audio clip to finish before disabling the dirt
+        StartCoroutine(DisableAfterAudioFinished());
+    }
+
+    // Coroutine to disable the dirt after the audio clip finishes playing
+    private IEnumerator DisableAfterAudioFinished()
+    {
+        // Wait until the audio clip finishes playing
+        yield return new WaitForSeconds(audioSource.clip.length);
+
+        // Disable the dirt GameObject
+        isDisabled = true;
         gameObject.SetActive(false);
     }
 }
