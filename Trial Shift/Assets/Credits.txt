@@ -48,7 +48,9 @@ https://www.soundsnap.com/hotel_ambience_corridor_quiet_night_room_tone
 
 https://www.soundsnap.com/hotel_ambience_night_corridor_door_opening_and_sounds_from_nearby_rooms
 
+https://www.soundsnap.com/room_tone_bathroom_02_wav
 
+https://www.soundsnap.com/oxygen_hiss_3
 
 
 == IMAGES ==
@@ -130,6 +132,8 @@ Plaster 001 - https://3dtextures.me/2018/03/11/plaster-001/
 Rough Plaster - https://freepbr.com/materials/rough-plaster-pbr-material/
 
 Rusty Corrugated Metal Panel 01 - https://www.cgbookcase.com/textures/rusty-corrugated-metal-panel-01/
+
+Tile Old USSR - https://substance3d.adobe.com/community-assets/assets/2b3922b3fdebf6a614ed9a9ba88f436cbbc315d9
 
 Used Stainless Steel 2 - https://freepbr.com/materials/used-stainless-steel2/
 
