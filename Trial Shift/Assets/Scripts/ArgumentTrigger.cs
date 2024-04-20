@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ArgumentTrigger : MonoBehaviour
 {
+    //REMINDER CONSIDER ON TRIGGER EXIT TO STOP RETRIGGERING AUDIO?
     public AudioClip[] audioClips;
     private AudioSource audioSource;
-    private bool isPlaying = false; // Flag to track if an instance of the script is currently playing a sound
+    public static bool isPlaying = false; // Flag to track if an instance of the script is currently playing a sound
     private float lastTriggerTime = -Mathf.Infinity; // Initialize to a value representing "no cooldown"
-    private float cooldownTime = 10f; // Cooldown time in seconds
+    private float cooldownTime = 15f; // Cooldown time in seconds
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         // Check if collision involves player and if enough time has passed since the last trigger
         if (other.CompareTag("Player") && Time.time - lastTriggerTime >= cooldownTime && !isPlaying)
@@ -36,7 +37,7 @@ public class ArgumentTrigger : MonoBehaviour
     }
 
     // Callback method called when the audio source finishes playing
-    private void Update()
+    public void Update()
     {
         // If audio has finished playing, reset the flag and start the cooldown
         if (!audioSource.isPlaying && isPlaying)

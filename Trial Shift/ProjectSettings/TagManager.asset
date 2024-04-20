@@ -7,6 +7,8 @@ TagManager:
   - Mop
   - Dirt
   - MopCollider
+  - Selectable
+  - Interactable
   layers:
   - Default
   - TransparentFX

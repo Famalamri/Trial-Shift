@@ -37,7 +37,7 @@ public class FlashlightController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(0))
         {
             if (flashlight != null)
             {
