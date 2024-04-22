@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public float playerReach = 3f;
-
+    public LayerMask lM;
     Interactable currentInteractable;
 
     // Update is called once per frame
@@ -17,20 +17,22 @@ public class PlayerInteraction : MonoBehaviour
         {
             currentInteractable.Interact();
         }
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward, Color.green);
     }
 
     void CheckInteraction()
     {
         RaycastHit hit;
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        
 
         //if collider within player reach
-        if (Physics.Raycast(ray, out hit, playerReach))
+        if (Physics.Raycast(ray, out hit, playerReach, lM))
         {
             if (hit.collider.tag == "Interactable") // if looking at interactable object
             {
                 Interactable newInteractable = hit.collider.GetComponent<Interactable>();
-
+                
                 //if there is currentinteractable and it is not newInteractable
                 if (currentInteractable && newInteractable != currentInteractable)
                 {
