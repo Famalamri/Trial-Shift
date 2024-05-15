@@ -28,7 +28,7 @@ public class WeaponSwitcher : MonoBehaviour
         if (scroll != 0f)
         {
             // Disable current weapon collider
-            SetColliderActive(currentWeapon, false);
+            //SetColliderActive(currentWeapon, false);
 
             // Update current weapon index
             currentWeapon += (int)Mathf.Sign(scroll);
